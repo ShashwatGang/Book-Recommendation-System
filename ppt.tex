@@ -1,0 +1,111 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{default}
+\pdfstringdefDisableCommands{%
+  \def\geq{>=}%
+  \def\ge{>=}%
+}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+\title[Book Recommendation System]{Book Recommendation System}
+\subtitle{A Dual-Approach Recommendation Engine Using Popularity-Based Filtering and Collaborative Filtering}
+\author{Sachin Srivastava, Shashwat Gangwar, Sumit Rawat, Kshitij Varma, Samyak Jain}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Project Overview: Dual-Model Approach}
+  This recommendation system addresses the challenge of connecting readers with books they'll genuinely enjoy by combining two distinct filtering strategies.
+  
+  \vspace{0.3cm}
+  \textbf{Popularity-Based Filtering}
+  \begin{itemize}
+      \item Identifies the Top 50 most-rated books from the dataset, applying a quality threshold of $\ge$ 250 ratings to ensure reliable recommendations based on community consensus.
+  \end{itemize}
+  
+  \vspace{0.2cm}
+  \textbf{Collaborative Filtering}
+  \begin{itemize}
+      \item Creates user-item similarity matrices using cosine similarity, filtering for engaged users ($\ge$ 200 ratings) and well-reviewed books ($\ge$ 50 ratings) to generate personalized recommendations.
+  \end{itemize}
+  
+  \vspace{0.3cm}
+  By combining these approaches, the system provides both trending books and personalized suggestions based on reading patterns.
+\end{frame}
+
+\begin{frame}{Comparison with Market Solutions}
+  \textbf{Existing Platforms}
+  \begin{itemize}
+      \item Goodreads, Amazon, and BookTok rely heavily on extensive user tracking including purchase history, browsing behavior, and social interactions.
+      \item Use content-based filtering alongside collaborative methods, analyzing book metadata, reviews, and descriptions.
+      \item Monetize user data through targeted advertising and personalized marketing.
+  \end{itemize}
+  
+  \vspace{0.3cm}
+  \textbf{This Project}
+  \begin{itemize}
+      \item Uses pure collaborative filtering based solely on user-book rating patterns without tracking additional metrics.
+      \item Focuses exclusively on the relationship between users and books, stripping away noise from other data sources.
+      \item Prioritizes user privacy by not collecting or storing extraneous personal information.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Tools \& Technologies Stack}
+  \textbf{Data Science \& Machine Learning}
+  \begin{itemize}
+      \item Built the core recommendation engine using Python with Pandas for data manipulation, NumPy for numerical computing, and Scikit-learn for implementing collaborative filtering algorithms and cosine similarity calculations.
+  \end{itemize}
+  
+  \vspace{0.2cm}
+  \textbf{Backend Development}
+  \begin{itemize}
+      \item Deployed a Flask web server to handle HTTP requests, manage user sessions, and serve recommendation queries through a RESTful API interface that connects the machine learning models with the frontend.
+  \end{itemize}
+
+  \vspace{0.2cm}
+  \textbf{Frontend Interface}
+  \begin{itemize}
+      \item Created an interactive user interface using HTML for structure, CSS for styling, and Bootstrap framework to ensure responsive design across devices, providing an intuitive experience for users to receive book recommendations.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Project Timeline: 6-Week Implementation}
+  \begin{itemize}
+      \item \textbf{Week 1: Data Collection \& Cleaning} \\ Gathered book rating datasets, removed duplicates, handled missing values, and standardized data formats to ensure quality inputs for the recommendation engine.
+      \item \textbf{Week 2: Exploratory Data Analysis} \\ Analyzed rating distributions, identified popular books and active users, visualized patterns in reading behavior, and determined appropriate filtering thresholds.
+      \item \textbf{Week 3: Model Building \& Evaluation} \\ Implemented both popularity-based and collaborative filtering algorithms, tested cosine similarity calculations, validated recommendations against known user preferences.
+      \item \textbf{Week 4: Flask API Integration} \\ Built RESTful endpoints to serve recommendations, connected machine learning models to backend logic, implemented user authentication and session management.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Project Timeline (Continued)}
+  \begin{itemize}
+      \item \textbf{Week 5: UI Development \& Testing} \\ Designed responsive frontend interface, integrated Bootstrap components, tested recommendation accuracy across different user profiles, and gathered feedback for improvements.
+      \item \textbf{Week 6: Final Optimization \& Documentation} \\ Refined algorithms based on testing results, optimized database queries for faster response times, documented codebase, and prepared final project deliverables.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Conclusion \& Future Enhancements}
+  \textbf{Key Achievements}
+  \begin{itemize}
+      \item This project successfully demonstrated a working recommendation system that combines popularity-based and collaborative filtering approaches.
+      \item The system provides personalized book suggestions while maintaining user privacy through minimal data collection.
+  \end{itemize}
+  
+  \vspace{0.2cm}
+  \textbf{Future Scope}
+  \begin{itemize}
+      \item \textbf{Content-Based Hybrid:} Integrate book metadata (genre, author, themes) to recommend similar books when collaborative data is sparse, improving cold-start performance for new users.
+      \item \textbf{Matrix Factorization:} Implement Singular Value Decomposition or neural collaborative filtering to capture latent factors influencing book preferences, potentially improving recommendation accuracy.
+      \item \textbf{User Feedback Loop:} Add explicit feedback mechanisms where users can rate recommendations, enabling online learning to continuously refine the model based on user responses.
+  \end{itemize}
+\end{frame}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+\end{document}
