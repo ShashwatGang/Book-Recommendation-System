@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Recommendations</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">📚 My Book Recommender</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/recommend">Recommend</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-8 text-center">
+                <h1 class="mb-4 fw-bold">Find Your Next Great Read</h1>
+                <form action="/recommend_books" method="post" class="d-flex gap-2">
+                    <input name="user_input" type="text" class="form-control form-control-lg bg-dark text-white border-secondary" placeholder="Enter a book you love...">
+                    <button type="submit" class="btn btn-warning btn-lg px-4">Search</button>
+                </form>
+            </div>
+        </div>
+
+        {% if error_message %}
+            <div class="alert alert-danger text-center shadow-sm" role="alert">
+                {{ error_message }}
+            </div>
+        {% endif %}
+
+        <div class="row g-4 mb-5">
+            <div class="col-md-6">
+                <div class="form-panel">
+                    <h4 class="mb-3">➕ Add a New Book</h4>
+                    <form action="/add_book" method="POST">
+                        <div class="mb-3">
+                            <input type="text" name="isbn" class="form-control bg-dark text-white border-secondary" placeholder="Enter 13-digit ISBN (e.g., 9780451524935)" required>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-custom">Fetch Book Data</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-panel">
+                    <h4 class="mb-3">⭐ Rate a Book</h4>
+                    <form action="/rate_book" method="POST">
+                        <div class="mb-2">
+                            <input type="text" name="user_name" class="form-control bg-dark text-white border-secondary" placeholder="Your Name or Alias" required>
+                        </div>
+                        <div class="mb-2">
+                            <input type="text" name="isbn" class="form-control bg-dark text-white border-secondary" placeholder="Book ISBN" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="number" name="rating_score" class="form-control bg-dark text-white border-secondary" placeholder="Rating (1-10)" min="1" max="10" required>
+                        </div>
+                        <button type="submit" class="btn btn-warning btn-custom text-dark">Submit Rating</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        {% if data %}
+            <h3 class="mb-4 text-center border-bottom border-secondary pb-3" style="color: #00a65a;">Because you read that, try these:</h3>
+            <div class="row row-cols-2 row-cols-md-4 g-4 mb-5">
+                {% for i in data %}
+                <div class="col">
+                    <div class="card book-card">
+                        <img src="{{i[2]}}" class="card-img-top" alt="Book Cover">
+                        <div class="card-body text-center">
+                            <p>{{i[1]}}</p>
+                            <h4>{{i[0]}}</h4>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+    </div>
+</body>
+</html>
