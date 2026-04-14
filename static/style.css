@@ -1,0 +1,64 @@
+/* --- Global Styles --- */
+body {
+    background-color: #121212; /* Sleek dark gray, much better than pure black */
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- Navbar --- */
+.custom-navbar {
+    background-color: #00a65a !important; /* Keeping your signature green */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* --- Book Cards --- */
+.book-card {
+    background-color: #1e1e1e;
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%; /* Keeps cards the same height */
+}
+
+/* This creates the floating hover effect! */
+.book-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 166, 90, 0.4); 
+}
+
+.book-card img {
+    height: 280px;
+    object-fit: cover; /* Prevents images from stretching weirdly */
+}
+
+.card-body p {
+    font-size: 0.9rem;
+    color: #b0b0b0;
+    margin-bottom: 5px;
+}
+
+.card-body h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+/* --- Form Panels --- */
+.form-panel {
+    background-color: #1e1e1e;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    border-top: 4px solid #00a65a;
+}
+
+.btn-custom {
+    width: 100%;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
