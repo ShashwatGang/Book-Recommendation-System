@@ -2,5 +2,5 @@
  Shashwat Gangwar 
  Sumit Rawat
  Samyak Jain
- Sachin Srivastava
+ sachin srivastava
  Kshitij Varma
